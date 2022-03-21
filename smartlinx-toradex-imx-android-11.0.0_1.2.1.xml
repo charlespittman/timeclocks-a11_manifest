@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <include name="imx-android-11.0.0_1.2.1.xml"/>
+
+  <remote  name="smartlinx-github"
+           fetch="ssh://git@github.com/charlespittman/"
+           revision="smartlinx/toradex/android-11.0.0_1.2.1"
+           review="" />
+
+  <remove-project name="platform/build" />
+  <remove-project name="platform/external/toybox" />
+  <remove-project name="kernel/configs"/>
+  <remove-project name="platform/system/connectivity/wificond" />
+  <remove-project name="platform/system/bt" />
+  <remove-project name="platform/hardware/nxp/libbt" />
+  <remove-project name="imx-atf" />
+  <remove-project name="linux-imx" />
+  <remove-project name="uboot-imx" />
+  
+  <!-- Projects modified by Kynetics -->
+  <project path="build/make" name="timeclocks-a11_build_make" revision="toradex/android-11.0.0_1.2.1" remote="smartlinx-github" >
+     <copyfile src="core/root.mk" dest="Makefile" />
+     <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+     <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+     <linkfile src="core" dest="build/core" />
+     <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+     <linkfile src="target" dest="build/target" />
+     <linkfile src="tools" dest="build/tools" />
+   </project>
+
+  <project path="vendor/nxp-opensource/kernel_imx" name="timeclocks-a11_vendor_nxp-opensource_kernel-imx" remote="smartlinx-github" />
+  <project path="vendor/nxp-opensource/uboot-imx" name="timeclocks-a11_vendor_nxp-opensource_uboot-imx" remote="smartlinx-github" />
+  <project path="vendor/nxp-opensource/arm-trusted-firmware" name="timeclocks-a11_vendor_nxp-opensource_arm-trusted-firmware" revision="toradex/android-11.0.0_1.2.1" remote="smartlinx-github" />
+  <project path="kernel/configs" name="timeclocks-a11_kernel_configs" revision="toradex/android-11.0.0_1.2.1" remote="smartlinx-github" />
+  <project path="system/connectivity/wificond" name="timeclocks-a11_system_connectivity_wificond" revision="toradex/android-11.0.0_1.2.1" remote="smartlinx-github" />
+  <project path="hardware/nxp/libbt" name="timeclocks-a11_hardware_nxp_libbt" revision="toradex/android-11.0.0_1.2.1" remote="smartlinx-github" />
+  <project path="system/bt" name="timeclocks-a11_system_bt" revision="toradex/android-11.0.0_1.2.1" remote="smartlinx-github" />
+  <project path="external/i2c-tools" name="timeclocks-a11_external_i2c-tools" remote="smartlinx-github" />
+  <project path="external/toybox"  name="timeclocks-a11_external_toybox" revision="toradex/android-11.0.0_1.2.1" remote="smartlinx-github" />
+
+  <!-- Projects added by Kynetics -->
+  <project path="device/toradex" name="timeclocks-a11_device_toradex" revision="toradex/android-11.0.0_1.2.1" remote="smartlinx-github" />
+  <project path="device/smartlinx" name="timeclocks-a11_device_smartlinx" revision="smartlinx/toradex/android-11.0.0_1.2.1" remote="smartlinx-github" >
+    <linkfile src="common/tools/imx-make.sh" dest="imx-make.sh" />
+  </project>
+
+</manifest>
